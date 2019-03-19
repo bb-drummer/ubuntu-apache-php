@@ -1,0 +1,28 @@
+stages:
+  - test
+  - deploy
+
+image: docker
+
+before_script:
+  - docker info
+  - test/clone_samplecode.sh
+
+test:
+  tags:
+    - docker
+  script:
+    - test/test.sh 7.0
+    - test/test.sh 7.1
+    - test/test.sh 7.2
+
+deployment:
+  tags:
+    - docker
+  script:
+    - test/push_image_to_hub.sh
+  when: manual
+  only:
+    refs:
+      - master
+      - release
