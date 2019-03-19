@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		apache2 \
 		software-properties-common \
 		supervisor \
+		net-tools \
 	&& apt-get clean \
 	&& rm -fr /var/lib/apt/lists/*
 
