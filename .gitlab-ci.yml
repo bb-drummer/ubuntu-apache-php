@@ -12,6 +12,8 @@ test-php:
   stage: test
   tags:
     - docker
+  services:
+    - name: docker:dind
   script:
     - test/test.sh 5.6
     - test/test.sh 7.0
@@ -23,6 +25,8 @@ docker-hub:
   stage: deploy
   tags:
     - docker
+  services:
+    - name: docker:dind
   environment:
     name: production
     url: https://hub.docker.com/r/bbdrummer/ubuntu-apache-php
