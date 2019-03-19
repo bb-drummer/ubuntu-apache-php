@@ -13,6 +13,7 @@ test-php:
     - docker
   services:
     - name: docker:dind
+    - name: alpine/git:latest
   script:
     - test/test.sh 5.6
     - test/test.sh 7.0
@@ -27,6 +28,7 @@ docker-hub:
     - docker
   services:
     - name: docker:dind
+    - name: alpine/git:latest
   environment:
     name: production
     url: https://hub.docker.com/r/bbdrummer/ubuntu-apache-php
