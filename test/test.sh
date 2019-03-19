@@ -15,7 +15,7 @@ docker build -t ci/test:${PHP_VERSION} -f Dockerfile.${PHP_VERSION} .
 CID=`docker run -d -p 80:80 ci/test:${PHP_VERSION}`
 
 # wait for start of apache
-sleep 15
+sleep 30
 curl -vf localhost
 
 docker stop $CID

@@ -7,18 +7,37 @@ before_script:
   - docker info
   - test/clone_samplecode.sh
 
-test-php:
+.test-setup: &test-setup
   image: docker:stable
   services:
     - name: docker:dind
   stage: test
   tags:
     - docker
+
+php5.6:
+  <<: *test-setup
   script:
     - test/test.sh 5.6
+
+php7.0:
+  <<: *test-setup
+  script:
     - test/test.sh 7.0
+
+php7.1:
+  <<: *test-setup
+  script:
     - test/test.sh 7.1
+
+php7.2:
+  <<: *test-setup
+  script:
     - test/test.sh 7.2
+
+php7.3:
+  <<: *test-setup
+  script:
     - test/test.sh 7.3
 
 docker-hub:
@@ -32,7 +51,11 @@ docker-hub:
     name: production
     url: https://hub.docker.com/r/bbdrummer/ubuntu-apache-php
   dependencies:
-    - test-php
+    - php5.6
+    - php7.0
+    - php7.1
+    - php7.2
+    - php7.3
   script:
     - test/push_image_to_hub.sh
   when: manual
