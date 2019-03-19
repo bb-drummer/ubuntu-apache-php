@@ -12,10 +12,10 @@ echo "RUN cp /test/index.php /var/www/html/" >> Dockerfile.${PHP_VERSION}
 docker build -t ci/base:${PHP_VERSION} -f ../${PHP_VERSION}/Dockerfile ../
 docker build -t ci/test:${PHP_VERSION} -f Dockerfile.${PHP_VERSION} .
 
-CID=`docker run -d -p 80:80 ci/test:${PHP_VERSION}`
+CID=`docker run -d -p 81:80 ci/test:${PHP_VERSION}`
 
 # wait for start of apache
-sleep 30
-curl -vf localhost
+sleep 15
+curl -vf http://localhost:81
 
 docker stop $CID

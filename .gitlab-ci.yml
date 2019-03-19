@@ -24,6 +24,7 @@ php7.0:
   <<: *test-setup
   script:
     - test/test.sh 7.0
+  when: manual
 
 php7.1:
   <<: *test-setup
@@ -34,11 +35,13 @@ php7.2:
   <<: *test-setup
   script:
     - test/test.sh 7.2
+  when: manual
 
 php7.3:
   <<: *test-setup
   script:
     - test/test.sh 7.3
+  when: manual
 
 docker-hub:
   image: docker:stable
