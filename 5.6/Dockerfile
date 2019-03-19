@@ -45,6 +45,7 @@ COPY script/run.sh /run.sh
 RUN chmod 755 /run.sh
 
 COPY conf/config /config
+COPY test/index.php /test/index.php
 
 
 EXPOSE 80
