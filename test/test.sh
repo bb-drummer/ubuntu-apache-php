@@ -20,7 +20,7 @@ CID=`docker run -d -p 80:80 ci/test:${PHP_VERSION}`
 
 # wait for start of apache
 sleep 15
-curl -vf localhost
-#curl -vf http://172.18.0.2:80
+#curl -vf localhost
+curl -vf http://172.18.0.2
 
 docker stop $CID
