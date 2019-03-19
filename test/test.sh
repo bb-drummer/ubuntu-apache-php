@@ -16,12 +16,14 @@ echo "RUN ifconfig" >> Dockerfile.${PHP_VERSION}
 docker build -t ci/base:${PHP_VERSION} -f ../${PHP_VERSION}/Dockerfile ../
 docker build -t ci/test:${PHP_VERSION} -f Dockerfile.${PHP_VERSION} .
 
-CID=`docker run -d -p 80:80 ci/test:${PHP_VERSION}`
+#CID=`docker run -d --name php-ci-test -p 80:80 ci/test:${PHP_VERSION}`
+docker run -d --name php-ci-test -p 80:80 ci/test:${PHP_VERSION}
 
 echo "Docker Container ID: $CID"
 # wait for start of apache
-sleep 90
-#curl -vf localhost
-curl -vf http://172.18.0.2
+sleep 120
+curl -vf localhost
+#curl -vf http://172.18.0.2
 
-docker stop $CID
+#docker stop $CID
+docker stop php-ci-test
