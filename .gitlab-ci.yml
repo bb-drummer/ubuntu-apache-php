@@ -8,10 +8,9 @@ before_script:
   - test/clone_samplecode.sh
 
 .test-setup: &test-setup
-  image: docker:dind
-  #image: docker:stable
-  #services:
-  #  - name: docker:dind
+  image: docker:stable
+  services:
+    - name: docker:dind
   stage: test
   tags:
     - docker
