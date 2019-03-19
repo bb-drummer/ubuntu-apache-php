@@ -2,13 +2,12 @@ stages:
   - test
   - deploy
 
-image: docker:stable-dind
-
 before_script:
   - docker info
   - test/clone_samplecode.sh
 
 test-php:
+  image: docker:stable
   stage: test
   tags:
     - docker
@@ -22,6 +21,7 @@ test-php:
     - test/test.sh 7.3
 
 docker-hub:
+  image: docker:stable
   stage: deploy
   tags:
     - docker
