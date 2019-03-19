@@ -30,6 +30,7 @@ php7.1:
   <<: *test-setup
   script:
     - test/test.sh 7.1
+  when: manual
 
 php7.2:
   <<: *test-setup
