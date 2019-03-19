@@ -96,7 +96,17 @@ docker run -d -p 3380:3306 -e MYSQL_ROOT_PASSWORD= --name "dein-projekt-db" mysq
 ---
 
 
+## CI Konfiguration
+
+
+Für's Deployment (Push zu 'hub.docker.com') ist ein Docker build-/Zugangs-Token erforderlich
+
+
+---
+
+
 ## Links, weitere Infos
+
 
 - Docker intro, install/download: https://www.docker.com/get-started
 - Docker docs: https://docs.docker.com/get-started/

@@ -2,7 +2,7 @@ stages:
   - test
   - deploy
 
-image: docker
+image: docker:stable-dind
 
 before_script:
   - docker info
@@ -12,13 +12,20 @@ test:
   tags:
     - docker
   script:
+    - test/test.sh 5.6
     - test/test.sh 7.0
     - test/test.sh 7.1
     - test/test.sh 7.2
+    - test/test.sh 7.3
 
 deployment:
   tags:
     - docker
+  environment:
+    name: production
+    url: https://hub.docker.com/r/bbdrummer/ubuntu-apache-php
+  dependencies:
+    - test
   script:
     - test/push_image_to_hub.sh
   when: manual
