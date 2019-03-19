@@ -8,7 +8,8 @@ before_script:
   - docker info
   - test/clone_samplecode.sh
 
-test:
+test-php:
+  stage: test
   tags:
     - docker
   script:
@@ -18,14 +19,15 @@ test:
     - test/test.sh 7.2
     - test/test.sh 7.3
 
-deployment:
+docker-hub:
+  stage: deploy
   tags:
     - docker
   environment:
     name: production
     url: https://hub.docker.com/r/bbdrummer/ubuntu-apache-php
   dependencies:
-    - test
+    - test-php
   script:
     - test/push_image_to_hub.sh
   when: manual
