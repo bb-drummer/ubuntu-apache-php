@@ -11,7 +11,7 @@ echo "RUN cp /test/index.php /var/www/html/" >> Dockerfile.${PHP_VERSION}
 echo "RUN service apache2 restart" >> Dockerfile.${PHP_VERSION}
 echo "RUN cat /var/log/apache2/error.log" >> Dockerfile.${PHP_VERSION}
 echo "RUN apache2ctl -S" >> Dockerfile.${PHP_VERSION}
-echo "RUN ip address" >> Dockerfile.${PHP_VERSION}
+echo "RUN ifconfig" >> Dockerfile.${PHP_VERSION}
 
 docker build -t ci/base:${PHP_VERSION} -f ../${PHP_VERSION}/Dockerfile ../
 docker build -t ci/test:${PHP_VERSION} -f Dockerfile.${PHP_VERSION} .
