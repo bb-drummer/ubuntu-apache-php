@@ -6,7 +6,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		apache2 \
 		software-properties-common \
 		supervisor \
-		net-tools \
 	&& apt-get clean \
 	&& rm -fr /var/lib/apt/lists/*
 
@@ -24,6 +23,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		php5.6-imap \
 		php5.6-intl \
 		php5.6-mbstring \
+    php7.1-mcrypt \
 		php5.6-mysql \
 		php5.6-mysqli \
 		php5.6-pgsql \
