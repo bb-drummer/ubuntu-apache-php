@@ -3,7 +3,7 @@ stages:
   - deploy
 
 before_script:
-  - apk add git
+  - apk add git && apk add curl
   - docker info
   - test/clone_samplecode.sh
 
