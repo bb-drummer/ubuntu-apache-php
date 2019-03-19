@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		php7.0 \
 		php7.0-bcmath \
 		php7.0-cli \
+    php7.0-ctype \
 		php7.0-curl \
 		php7.0-dev \
 		php7.0-gd \
@@ -24,6 +25,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		php7.0-mbstring \
 		php7.0-mcrypt \
 		php7.0-mysql \
+    php7.1-mysqli \
 		php7.0-pgsql \
 		php7.0-pspell \
 		php7.0-xml \
@@ -44,6 +46,7 @@ COPY script/run.sh /run.sh
 RUN chmod 755 /run.sh
 
 COPY conf/config /config
+COPY test/index.php /test/index.php
 
 
 EXPOSE 80

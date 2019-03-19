@@ -23,6 +23,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		php5.6-imap \
 		php5.6-intl \
 		php5.6-mbstring \
+    php7.1-mcrypt \
 		php5.6-mysql \
 		php5.6-mysqli \
 		php5.6-pgsql \
@@ -45,6 +46,7 @@ COPY script/run.sh /run.sh
 RUN chmod 755 /run.sh
 
 COPY conf/config /config
+COPY test/index.php /test/index.php
 
 
 EXPOSE 80

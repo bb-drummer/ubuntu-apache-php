@@ -2,30 +2,61 @@ stages:
   - test
   - deploy
 
-image: docker:stable-dind
-
 before_script:
+  - apk add git && apk add curl
   - docker info
   - test/clone_samplecode.sh
 
-test:
+.test-setup: &test-setup
+  image: docker:stable
+  services:
+    - name: docker:dind
+      alias: php-ci-test
+  stage: test
   tags:
     - docker
+
+php5.6:
+  <<: *test-setup
   script:
     - test/test.sh 5.6
+
+php7.0:
+  <<: *test-setup
+  script:
     - test/test.sh 7.0
+
+php7.1:
+  <<: *test-setup
+  script:
     - test/test.sh 7.1
+
+php7.2:
+  <<: *test-setup
+  script:
     - test/test.sh 7.2
+
+php7.3:
+  <<: *test-setup
+  script:
     - test/test.sh 7.3
 
-deployment:
+docker-hub:
+  image: docker:stable
+  services:
+    - name: docker:dind
+  stage: deploy
   tags:
     - docker
   environment:
     name: production
     url: https://hub.docker.com/r/bbdrummer/ubuntu-apache-php
   dependencies:
-    - test
+    - php5.6
+    - php7.0
+    - php7.1
+    - php7.2
+    - php7.3
   script:
     - test/push_image_to_hub.sh
   when: manual
