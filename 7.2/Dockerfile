@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		php7.2-imap \
 		php7.2-intl \
 		php7.2-mbstring \
-    php7.2-mcrypt \
+    php7.1-mcrypt \
 		php7.2-mysql \
 		php7.2-mysqli \
 		php7.2-pgsql \
