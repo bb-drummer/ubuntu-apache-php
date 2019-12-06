@@ -14,7 +14,7 @@ docker build -t ci/base:${PHP_VERSION} -f ../${PHP_VERSION}/Dockerfile ../
 docker build -t ci/test:${PHP_VERSION} -f Dockerfile.${PHP_VERSION} .
 
 # run the container
-CID=`docker run --rm -d -p 80:80ci/test:${PHP_VERSION}`
+CID=`docker run --rm -d -p 80:80 ci/test:${PHP_VERSION}`
 echo "Docker Container ID: $CID"
 
 # wait for start of apache
