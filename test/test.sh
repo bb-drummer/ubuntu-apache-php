@@ -18,7 +18,7 @@ CID=`docker run --rm -d -p 8000:80 ci/test:${PHP_VERSION}`
 echo "Docker Container ID: $CID"
 
 # wait for start of apache
-sleep 15
+sleep 30
 #curl -vf localhost
 curl -vf php-ci-test:8000
 
