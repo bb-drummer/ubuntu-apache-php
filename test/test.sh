@@ -20,6 +20,6 @@ echo "Docker Container ID: $CID"
 # wait for start of apache
 sleep 30
 #curl -vf localhost
-curl -vf php-ci-test:8000
+curl -vf localhost:8000
 
 docker stop $CID
