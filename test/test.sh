@@ -14,12 +14,12 @@ docker build -t ci/base:${PHP_VERSION} -f ../${PHP_VERSION}/Dockerfile ../
 docker build -t ci/test:${PHP_VERSION} -f Dockerfile.${PHP_VERSION} .
 
 # run the container
-CID=`docker run --rm -d -p 80 ci/test:${PHP_VERSION}`
+CID=`docker run --rm -d -p 8000:80 ci/test:${PHP_VERSION}`
 echo "Docker Container ID: $CID"
 
 # wait for start of apache
 sleep 15
 #curl -vf localhost
-curl -vf php-ci-test:80
+curl -vf php-ci-test:8000
 
 docker stop $CID
