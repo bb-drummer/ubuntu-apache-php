@@ -4,6 +4,10 @@
 PHP_VERSION=$1
 cd `dirname $0`
 
+if [[ -z "$TEST_IP" ]]; then
+    TEST_IP=0.0.0.0;
+fi;
+
 echo "FROM ci/base:${PHP_VERSION}" >> Dockerfile.${PHP_VERSION}
 
 #echo "RUN rm -f /var/www/html/index.html" >> Dockerfile.${PHP_VERSION}
@@ -21,9 +25,7 @@ echo "Docker Container IP: $CONTAINER_IP"
 
 # wait for start of apache
 sleep 15
-#curl -vf http://localhost:9876/index.php
-#curl -vf http://0.0.0.0:9876/index.php
-curl -vf http://85.25.197.106:9876/index.php
-#curl -vf http://$CONTAINER_IP:9876/index.php
+
+curl -vf http://$TEST_IP:9876/index.php
 
 docker stop $CID
