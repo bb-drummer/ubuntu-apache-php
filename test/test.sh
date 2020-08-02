@@ -21,7 +21,9 @@ echo "Docker Container IP: $CONTAINER_IP"
 
 # wait for start of apache
 sleep 15
-#curl -vf http://localhost:9876/index.php
+curl -vf http://localhost:9876/index.php
 curl -vf http://0.0.0.0:9876/index.php
+curl -vf http://85.25.197.106/index.php
+curl -vf http://$CONTAINER_IP:9876/index.php
 
 docker stop $CID
