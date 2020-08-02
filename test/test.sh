@@ -16,10 +16,11 @@ docker build -t ci/test:${PHP_VERSION} -f Dockerfile.${PHP_VERSION} .
 # run the container
 CID=`docker run --rm -d -p 9876:80 ci/test:${PHP_VERSION}`
 echo "Docker Container ID: $CID"
+CONTAINER_IP=`docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ${CID}`
 
 # wait for start of apache
 sleep 15
 #curl -vf localhost
-curl -vf localhost:9876
+curl -vf $CONTAINER_IP:9876
 
 docker stop $CID
