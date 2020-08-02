@@ -12,9 +12,11 @@ before_script:
   services:
     - name: docker:dind
       alias: php-ci-test
+      # (CA) Zertifikate nicht verfgbar, deshalb Workaround:
+      command: ["--insecure-registry=harbor.bjoernbartels.earth:8013"]
   stage: test
   tags:
-    - docker
+    - docker-runner
 
 php5.6:
   <<: *test-setup
