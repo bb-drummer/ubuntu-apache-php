@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 LABEL maintainer="Björn Bartels <coding@bjoernbartels.earth>"
 
@@ -45,10 +45,8 @@ COPY conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 RUN apt-get update && apt-get install -y wget curl vim nano
 
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-RUN php -r "if (hash_file('sha384', 'composer-setup.php') === '48e3236262b34d30969dca3c37281b3b4bbe3221bda826ac6a9a62d6444cdb0dcd0615698a5cbe587c3f0fe57a54d8f5') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
-RUN php -r "unlink('composer-seup.php');"
+COPY script/install-composer.sh /install-composer.sh
+RUN chmod 755 /install-composer.sh && /install-composer.sh
 
 COPY script/run.sh /run.sh
 RUN chmod 755 /run.sh

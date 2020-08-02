@@ -41,6 +41,11 @@ php7.3:
   script:
     - test/test.sh 7.3
 
+php7.4:
+  <<: *test-setup
+  script:
+    - test/test.sh 7.4
+
 docker-hub:
   image: docker:stable
   services:
@@ -57,6 +62,7 @@ docker-hub:
     - php7.1
     - php7.2
     - php7.3
+    - php7.4
   script:
     - test/push_image_to_hub.sh
   when: manual
