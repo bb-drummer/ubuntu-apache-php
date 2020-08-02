@@ -1,5 +1,5 @@
 ###!/usr/bin/env bash
-set -e
+#set -e
 
 PHP_VERSION=$1
 cd `dirname $0`
@@ -17,10 +17,11 @@ docker build -t ci/test:${PHP_VERSION} -f Dockerfile.${PHP_VERSION} .
 CID=`docker run --rm -d -p 9876:80 ci/test:${PHP_VERSION}`
 echo "Docker Container ID: $CID"
 CONTAINER_IP=`docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ${CID}`
+echo "Docker Container IP: $CONTAINER_IP"
 
 # wait for start of apache
 sleep 15
-#curl -vf localhost
-curl -vf $CONTAINER_IP:9876
+curl -vf http://localhost:9876/index.php
+#curl -vf http://$CONTAINER_IP:9876/index.php
 
 docker stop $CID
