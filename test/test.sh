@@ -1,5 +1,5 @@
 ###!/usr/bin/env bash
-#set -e
+set -e
 
 PHP_VERSION=$1
 cd `dirname $0`
