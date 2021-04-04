@@ -21,7 +21,7 @@ docker build -t ci/base:${PHP_VERSION} -f ../${PHP_VERSION}/Dockerfile ../
 docker build -t ci/test:${PHP_VERSION} -f Dockerfile.${PHP_VERSION} .
 
 # run the container
-CID=`docker run --rm -d -p $TEST_PORT:80 ci/test:${PHP_VERSION}`
+CID=`docker run -h phptest --rm -d -p $TEST_PORT:80 ci/test:${PHP_VERSION}`
 echo "Docker Container ID: $CID"
 CONTAINER_IP=`docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ${CID}`
 echo "Docker Container IP: $CONTAINER_IP"
@@ -29,12 +29,10 @@ echo "Docker Container IP: $CONTAINER_IP"
 # wait for start of apache
 sleep 15
 
-
 if [[ "$TEST_IP" == "none" ]]; then
-    HOST_IP=$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1')
-    curl -vf http://127.0.0.1:$TEST_PORT/index.php
+    docker exec -ti ${CID} curl -vf --retry 10 --retry-delay 5 --retry-connrefused http://127.0.0.1:80/index.php
 else
-    curl -vf http://$TEST_IP:$TEST_PORT/index.php
+    curl -vf --retry 10 --retry-delay 5 --retry-connrefused http://$TEST_IP:$TEST_PORT/index.php
 fi;
 
 docker stop $CID
