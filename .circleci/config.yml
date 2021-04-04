@@ -12,13 +12,6 @@ dependencies:
 
 test:
   override:
-    - test/test.sh 5.6
-    - test/test.sh 7.0
-    - test/test.sh 7.1
-    - test/test.sh 7.2
-    - test/test.sh 7.3
-    - test/test.sh 7.4
-    - test/test.sh 8.0
 
 deployment:
   release:
@@ -27,17 +20,77 @@ deployment:
       - test/push_image_to_hub.sh
 
 jobs:
-  testing:
+  php5.6:
     docker:
       - image: docker:dind
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_TOKEN
     steps:
-      - run: echo "testing..."
+      - run: test/test.sh 5.6
+  php7.0:
+    docker:
+      - image: docker:dind
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_TOKEN
+    steps:
+      - run: test/test.sh 7.0
+  php7.1:
+    docker:
+      - image: docker:dind
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_TOKEN
+    steps:
+      - run: test/test.sh 7.1
+  php7.2:
+    docker:
+      - image: docker:dind
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_TOKEN
+    steps:
+      - run: test/test.sh 7.2
+  php7.3:
+    docker:
+      - image: docker:dind
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_TOKEN
+    steps:
+      - run: test/test.sh 7.3
+  php7.4:
+    docker:
+      - image: docker:dind
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_TOKEN
+    steps:
+      - run: test/test.sh 7.4
+  php8.0:
+    docker:
+      - image: docker:dind
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_TOKEN
+    steps:
+      - run: test/test.sh 8.0
 
 workflows:
   php-build:
     jobs:
-      - testing:
+      - php5.6:
+          context: docker
+      - php7.0:
+          context: docker
+      - php7.1:
+          context: docker
+      - php7.2:
+          context: docker
+      - php7.3:
+          context: docker
+      - php7.4:
+          context: docker
+      - php8.0:
           context: docker
