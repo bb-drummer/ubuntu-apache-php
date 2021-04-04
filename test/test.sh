@@ -11,7 +11,7 @@ if [[ -z "$TEST_PORT" ]]; then
     TEST_PORT=9876;
 fi;
 
-echo "FROM ci/base:${PHP_VERSION}" >> Dockerfile.${PHP_VERSION}
+echo "FROM ci/base:${PHP_VERSION}" > Dockerfile.${PHP_VERSION}
 
 #echo "RUN rm -f /var/www/html/index.html" >> Dockerfile.${PHP_VERSION}
 ##echo "ADD code /var/www/html" >> Dockerfile.${PHP_VERSION}

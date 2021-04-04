@@ -35,25 +35,26 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		php-apcu \
 		php-pear \
 		php-zip \
-        php-pear \
-        php-dev \
-        libmcrypt-dev \
+    php-pear \
+    php-dev \
+		php-memcached \
+    libmcrypt-dev \
 	&& apt-get clean \
 	&& rm -fr /var/lib/apt/lists/*
 
 RUN pecl channel-update pecl.php.net && pecl update-channels
 RUN pecl install -o -f mcrypt-1.0.4 && \
-    docker-php-ext-enable mcrypt
+    echo "extension=mcrypt.so" > /etc/php/8.0/apache2/conf.d/30-mcrypt.ini
 
 RUN pecl install redis \
-    && docker-php-ext-enable redis
+    echo "extension=redis.so" > /etc/php/8.0/apache2/conf.d/30-redis.ini
 
 RUN pecl install xdebug-3.0.3 \
-    && docker-php-ext-enable xdebug
+    echo "extension=xdebug.so" > /etc/php/8.0/apache2/conf.d/30-xdebug.ini
 
-RUN apt-get install -y libmemcached-dev zlib1g-dev \
-    && pecl install memcached \
-    && docker-php-ext-enable memcached
+#RUN apt-get install -y libmemcached zlib1g \
+#    && pecl install memcached \
+#    echo "extension=memcached.so" > /etc/php/8.0/apache2/conf.d/30-memcached.ini
 
 
 
