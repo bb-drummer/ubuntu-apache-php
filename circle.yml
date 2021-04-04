@@ -11,6 +11,9 @@ test:
     - test/test.sh 7.0
     - test/test.sh 7.1
     - test/test.sh 7.2
+    - test/test.sh 7.3
+    - test/test.sh 7.4
+    - test/test.sh 8.0
 deployment:
   release:
     branch: master
