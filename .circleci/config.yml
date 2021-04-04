@@ -3,7 +3,7 @@ version: 2.1
   
 machine:
   services:
-    - docker
+    - docker:dind
 
 dependencies:
   pre:
@@ -29,7 +29,7 @@ deployment:
 jobs:
   testing:
     docker:
-      - image: docker/dind
+      - image: docker:dind
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_TOKEN
