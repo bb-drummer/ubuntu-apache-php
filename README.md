@@ -2,7 +2,7 @@
 # Apache/PHP Docker Images und Container
 
 
-- *derzeit verfügbare PHP Versionen*: **5.6**, **7.7**, **7.1**, **7.2**, **7.3**, **7.4**, **8.0**
+- *derzeit verfügbare PHP Versionen*: **5.6**, **7.0**, **7.1**, **7.2**, **7.3**, **7.4**, **8.0**
 
 
 ---
