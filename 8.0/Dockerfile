@@ -27,7 +27,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		php8.0-imap \
 		php8.0-intl \
 		php8.0-mbstring \
-		php8.0-pdo_mysql \
+		php8.0-mysql \
 		php8.0-pgsql \
 		php8.0-pspell \
 		php8.0-xml \
