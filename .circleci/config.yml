@@ -20,7 +20,7 @@ deployment:
       - test/push_image_to_hub.sh
 
 jobs:
-  php5.6:
+  php-56:
     docker:
       - image: docker:dind
         auth:
@@ -28,7 +28,7 @@ jobs:
           password: $DOCKERHUB_TOKEN
     steps:
       - run: test/test.sh 5.6
-  php7.0:
+  php-70:
     docker:
       - image: docker:dind
         auth:
@@ -36,7 +36,7 @@ jobs:
           password: $DOCKERHUB_TOKEN
     steps:
       - run: test/test.sh 7.0
-  php7.1:
+  php-71:
     docker:
       - image: docker:dind
         auth:
@@ -44,7 +44,7 @@ jobs:
           password: $DOCKERHUB_TOKEN
     steps:
       - run: test/test.sh 7.1
-  php7.2:
+  php-72:
     docker:
       - image: docker:dind
         auth:
@@ -52,7 +52,7 @@ jobs:
           password: $DOCKERHUB_TOKEN
     steps:
       - run: test/test.sh 7.2
-  php7.3:
+  php-73:
     docker:
       - image: docker:dind
         auth:
@@ -60,7 +60,7 @@ jobs:
           password: $DOCKERHUB_TOKEN
     steps:
       - run: test/test.sh 7.3
-  php7.4:
+  php-74:
     docker:
       - image: docker:dind
         auth:
@@ -68,7 +68,7 @@ jobs:
           password: $DOCKERHUB_TOKEN
     steps:
       - run: test/test.sh 7.4
-  php8.0:
+  php-80:
     docker:
       - image: docker:dind
         auth:
@@ -80,17 +80,17 @@ jobs:
 workflows:
   php-build:
     jobs:
-      - php5.6:
+      - php-56:
           context: docker
-      - php7.0:
+      - php-70:
           context: docker
-      - php7.1:
+      - php-71:
           context: docker
-      - php7.2:
+      - php-72:
           context: docker
-      - php7.3:
+      - php-73:
           context: docker
-      - php7.4:
+      - php-74:
           context: docker
-      - php8.0:
+      - php-80:
           context: docker
