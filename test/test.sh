@@ -29,6 +29,12 @@ echo "Docker Container IP: $CONTAINER_IP"
 # wait for start of apache
 sleep 15
 
-curl -vf http://$TEST_IP:$TEST_PORT/index.php
+
+if [[ "$TEST_IP" == "none" ]]; then
+    HOST_IP=$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1')
+    curl -vf http://$HOST_IP:$TEST_PORT/index.php
+else
+    curl -vf http://$TEST_IP:$TEST_PORT/index.php
+fi;
 
 docker stop $CID
