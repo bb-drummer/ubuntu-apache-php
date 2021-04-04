@@ -12,8 +12,6 @@ before_script:
   services:
     - name: docker:dind
       alias: php-ci-test
-      # (CA) Zertifikate nicht verfgbar, deshalb Workaround:
-      command: ["--insecure-registry=harbor.bjoernbartels.earth:8013"]
   stage: test
   tags:
     - docker-runner
@@ -22,34 +20,39 @@ php5.6:
   <<: *test-setup
   when: manual
   script:
-    - test/test.sh 5.6
+    - TEST_PORT=9856 test/test.sh 5.6
 
 php7.0:
   <<: *test-setup
   when: manual
   script:
-    - test/test.sh 7.0
+    - TEST_PORT=9870 test/test.sh 7.0
 
 php7.1:
   <<: *test-setup
   when: manual
   script:
-    - test/test.sh 7.1
+    - TEST_PORT=9871 test/test.sh 7.1
 
 php7.2:
   <<: *test-setup
   script:
-    - test/test.sh 7.2
+    - TEST_PORT=9872 test/test.sh 7.2
 
 php7.3:
   <<: *test-setup
   script:
-    - test/test.sh 7.3
+    - TEST_PORT=9873 test/test.sh 7.3
 
 php7.4:
   <<: *test-setup
   script:
-    - test/test.sh 7.4
+    - TEST_PORT=9874 test/test.sh 7.4
+
+php8.0:
+  <<: *test-setup
+  script:
+    - TEST_PORT=9880 test/test.sh 8.0
 
 docker-hub:
   image: docker:stable
@@ -68,6 +71,7 @@ docker-hub:
     - php7.2
     - php7.3
     - php7.4
+    - php8.0
   script:
     - test/push_image_to_hub.sh
   when: manual
