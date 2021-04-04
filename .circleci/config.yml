@@ -10,6 +10,7 @@ dependencies:
     - test/clone_samplecode.sh
 test:
   override:
+    - test/test.sh 5.6
     - test/test.sh 7.0
     - test/test.sh 7.1
     - test/test.sh 7.2
@@ -21,3 +22,8 @@ deployment:
     branch: master
     commands:
       - test/push_image_to_hub.sh
+
+workflows:
+  phpbuild:
+    jobs:
+      - echo "tesiing..."
