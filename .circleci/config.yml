@@ -27,6 +27,7 @@ jobs:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_TOKEN
     steps:
+      - checkout
       - run: test/test.sh 5.6
   php-70:
     docker:
@@ -35,6 +36,7 @@ jobs:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_TOKEN
     steps:
+      - checkout
       - run: test/test.sh 7.0
   php-71:
     docker:
@@ -43,6 +45,7 @@ jobs:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_TOKEN
     steps:
+      - checkout
       - run: test/test.sh 7.1
   php-72:
     docker:
@@ -51,6 +54,7 @@ jobs:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_TOKEN
     steps:
+      - checkout
       - run: test/test.sh 7.2
   php-73:
     docker:
@@ -59,6 +63,7 @@ jobs:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_TOKEN
     steps:
+      - checkout
       - run: test/test.sh 7.3
   php-74:
     docker:
@@ -67,6 +72,7 @@ jobs:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_TOKEN
     steps:
+      - checkout
       - run: test/test.sh 7.4
   php-80:
     docker:
@@ -75,6 +81,7 @@ jobs:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_TOKEN
     steps:
+      - checkout
       - run: test/test.sh 8.0
 
 workflows:
