@@ -3,7 +3,7 @@ version: 2.1
   
 machine:
   services:
-    - docker:dind
+    - docker
 
 dependencies:
   pre:
