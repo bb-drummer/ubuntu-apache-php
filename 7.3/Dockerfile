@@ -35,7 +35,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		php7.3-xmlrpc \
 		php7.3-apcu \
 		php7.3-memcached \
-		php7.3-pear \
+		php-pear \
 		php7.3-redis \
 		php7.3-zip \
 	&& apt-get clean \

@@ -35,7 +35,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		php7.4-xmlrpc \
 		php7.4-apcu \
 		php7.4-memcached \
-		php7.4-pear \
+		php-pear \
 		php7.4-redis \
 		php7.4-zip \
 	&& apt-get clean \
