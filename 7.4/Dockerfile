@@ -33,11 +33,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		php7.4-pspell \
 		php7.4-xml \
 		php7.4-xmlrpc \
-		php-apcu \
-		php-memcached \
-		php-pear \
-		php-redis \
-		php-zip \
+		php7.4-apcu \
+		php7.4-memcached \
+		php7.4-pear \
+		php7.4-redis \
+		php7.4-zip \
 	&& apt-get clean \
 	&& rm -fr /var/lib/apt/lists/*
 

@@ -32,9 +32,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		php8.0-pspell \
 		php8.0-xml \
 		php8.0-xmlrpc \
-		php-apcu \
-		php-pear \
-		php-zip \
+		php8.0-apcu \
+		php8.0-pear \
+		php8.0-zip \
     php-pear \
     php-dev \
 		php-memcached \
