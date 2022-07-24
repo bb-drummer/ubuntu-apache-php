@@ -1,5 +1,6 @@
 stages:
-  - test
+  - legacy
+  - build
   - deploy
 
 before_script:
@@ -12,12 +13,12 @@ before_script:
   services:
     - name: docker:dind
       alias: php-ci-test
-  stage: test
   tags:
     - docker-runner
 
 php5.6:
   <<: *test-setup
+  stage: legacy
   when: manual
   script:
     - TEST_PORT=9856 test/test.sh 5.6
@@ -25,39 +26,46 @@ php5.6:
 php7.0:
   <<: *test-setup
   when: manual
+  stage: legacy
   script:
     - TEST_PORT=9870 test/test.sh 7.0
 
 php7.1:
   <<: *test-setup
   when: manual
+  stage: legacy
   script:
     - TEST_PORT=9871 test/test.sh 7.1
 
 php7.2:
   <<: *test-setup
+  stage: legacy
   script:
     - TEST_PORT=9872 test/test.sh 7.2
 
 php7.3:
   <<: *test-setup
+  stage: build
   script:
     - TEST_PORT=9873 test/test.sh 7.3
 
 php7.4:
   <<: *test-setup
+  stage: build
   script:
     - TEST_PORT=9874 test/test.sh 7.4
 
 php8.0:
   <<: *test-setup
+  stage: build
   script:
     - TEST_PORT=9880 test/test.sh 8.0
 
 php8.1:
   <<: *test-setup
+  stage: build
   script:
-    - TEST_PORT=9880 test/test.sh 8.1
+    - TEST_PORT=9881 test/test.sh 8.1
 
 docker-hub:
   image: docker:stable
