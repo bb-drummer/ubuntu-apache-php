@@ -54,6 +54,11 @@ php8.0:
   script:
     - TEST_PORT=9880 test/test.sh 8.0
 
+php8.1:
+  <<: *test-setup
+  script:
+    - TEST_PORT=9880 test/test.sh 8.1
+
 docker-hub:
   image: docker:stable
   services:
@@ -72,6 +77,7 @@ docker-hub:
     - php7.3
     - php7.4
     - php8.0
+    - php8.1
   script:
     - test/push_image_to_hub.sh
   when: manual
