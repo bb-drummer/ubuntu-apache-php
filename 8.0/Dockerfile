@@ -10,6 +10,7 @@ RUN apt-get update -y && apt-get upgrade -y && apt-get install -y --no-install-r
 		software-properties-common \
 		supervisor \
         build-essential \
+		wget \
 	&& apt-get clean \
 	&& rm -fr /var/lib/apt/lists/*
 
