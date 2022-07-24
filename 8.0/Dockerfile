@@ -31,6 +31,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		php8.0-mysql \
 		php8.0-pgsql \
 		php8.0-pspell \
+		php-xml \
 		php8.0-xml \
 		php8.0-xmlrpc \
 		php8.0-apcu \
