@@ -35,8 +35,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		php8.0-apcu \
 		php-pear \
 		php8.0-zip \
-    php-pear \
-    php-dev \
+		php-pear \
+		php8-dev \
 		php-memcached \
     libmcrypt-dev \
 	&& apt-get clean \
