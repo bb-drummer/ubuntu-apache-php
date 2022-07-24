@@ -42,7 +42,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	&& apt-get clean \
 	&& rm -fr /var/lib/apt/lists/*
 
-RUN pecl channel-update pecl.php.net && pecl update-channels
+RUN pecl channel-update pecl.php.net
 RUN pecl install -o -f mcrypt-1.0.5 && \
     echo "extension=mcrypt.so" > /etc/php/8.0/apache2/conf.d/30-mcrypt.ini
 
