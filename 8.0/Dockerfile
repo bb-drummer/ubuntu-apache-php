@@ -36,13 +36,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		php-pear \
 		php8.0-zip \
 		php-pear \
-		php8-dev \
+		php-dev \
 		php-memcached \
     libmcrypt-dev \
 	&& apt-get clean \
 	&& rm -fr /var/lib/apt/lists/*
 
-#RUN pecl channel-update pecl.php.net
+RUN pecl channel-update
 RUN pecl install -o -f mcrypt-1.0.5 && \
     echo "extension=mcrypt.so" > /etc/php/8.0/apache2/conf.d/30-mcrypt.ini
 
