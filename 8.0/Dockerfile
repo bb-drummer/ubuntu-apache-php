@@ -47,7 +47,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN wget http://pear.php.net/go-pear.phar \
   && php go-pear.phar
 
-RUN pecl channel-update
+RUN pecl channel-update pecl.php.net
 RUN pecl install -o -f mcrypt-1.0.5 && \
     echo "extension=mcrypt.so" > /etc/php/8.0/apache2/conf.d/30-mcrypt.ini
 
