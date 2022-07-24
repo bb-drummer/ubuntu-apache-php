@@ -39,6 +39,7 @@ php7.1:
 
 php7.2:
   <<: *test-setup
+  when: manual
   stage: legacy
   script:
     - TEST_PORT=9872 test/test.sh 7.2
