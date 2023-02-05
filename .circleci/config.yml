@@ -137,3 +137,7 @@ workflows:
           context: docker
       - php-80:
           context: docker
+      - php-81:
+          context: docker
+      - php-82:
+          context: docker
