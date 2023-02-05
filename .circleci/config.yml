@@ -28,8 +28,7 @@ jobs:
           password: $DOCKERHUB_TOKEN
     steps:
       - checkout
-      - setup_remote_docker:
-          version: 19.03.13
+      - setup_remote_docker
       - run: apk update && apk add curl curl-dev
       - run: TEST_IP=none test/test.sh 5.6
   php-70:
@@ -40,8 +39,7 @@ jobs:
           password: $DOCKERHUB_TOKEN
     steps:
       - checkout
-      - setup_remote_docker:
-          version: 19.03.13
+      - setup_remote_docker
       - run: apk update && apk add curl curl-dev
       - run: TEST_IP=none test/test.sh 7.0
   php-71:
@@ -52,8 +50,7 @@ jobs:
           password: $DOCKERHUB_TOKEN
     steps:
       - checkout
-      - setup_remote_docker:
-          version: 19.03.13
+      - setup_remote_docker
       - run: apk update && apk add curl curl-dev
       - run: TEST_IP=none test/test.sh 7.1
   php-72:
@@ -64,8 +61,7 @@ jobs:
           password: $DOCKERHUB_TOKEN
     steps:
       - checkout
-      - setup_remote_docker:
-          version: 19.03.13
+      - setup_remote_docker
       - run: apk update && apk add curl curl-dev
       - run: TEST_IP=none test/test.sh 7.2
   php-73:
@@ -76,8 +72,7 @@ jobs:
           password: $DOCKERHUB_TOKEN
     steps:
       - checkout
-      - setup_remote_docker:
-          version: 19.03.13
+      - setup_remote_docker
       - run: apk update && apk add curl curl-dev
       - run: TEST_IP=none test/test.sh 7.3
   php-74:
@@ -88,8 +83,7 @@ jobs:
           password: $DOCKERHUB_TOKEN
     steps:
       - checkout
-      - setup_remote_docker:
-          version: 19.03.13
+      - setup_remote_docker
       - run: apk update && apk add curl curl-dev
       - run: TEST_IP=none test/test.sh 7.4
   php-80:
@@ -100,10 +94,31 @@ jobs:
           password: $DOCKERHUB_TOKEN
     steps:
       - checkout
-      - setup_remote_docker:
-          version: 19.03.13
+      - setup_remote_docker
       - run: apk update && apk add curl curl-dev
       - run: TEST_IP=none test/test.sh 8.0
+  php-81:
+    docker:
+      - image: docker:dind
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_TOKEN
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: apk update && apk add curl curl-dev
+      - run: TEST_IP=none test/test.sh 8.1
+  php-82:
+    docker:
+      - image: docker:dind
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_TOKEN
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: apk update && apk add curl curl-dev
+      - run: TEST_IP=none test/test.sh 8.2
 
 workflows:
   php-build:
