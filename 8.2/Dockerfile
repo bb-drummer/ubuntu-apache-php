@@ -17,26 +17,26 @@ RUN apt-get update -y && apt-get upgrade -y && apt-get install -y --no-install-r
 RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-		libapache2-mod-php8.1 \
-		php8.1 \
-		php8.1-bcmath \
-		php8.1-cli \
-		php8.1-ctype \
-		php8.1-curl \
-		php8.1-dev \
-		php8.1-gd \
-		php8.1-imap \
-		php8.1-intl \
-		php8.1-mbstring \
-		php8.1-mysql \
-		php8.1-pgsql \
-		php8.1-pspell \
+		libapache2-mod-php8.2 \
+		php8.2 \
+		php8.2-bcmath \
+		php8.2-cli \
+		php8.2-ctype \
+		php8.2-curl \
+		php8.2-dev \
+		php8.2-gd \
+		php8.2-imap \
+		php8.2-intl \
+		php8.2-mbstring \
+		php8.2-mysql \
+		php8.2-pgsql \
+		php8.2-pspell \
 		php-xml \
-		php8.1-xml \
-		php8.1-xmlrpc \
-		php8.1-apcu \
+		php8.2-xml \
+		php8.2-xmlrpc \
+		php8.2-apcu \
 		php-pear \
-		php8.1-zip \
+		php8.2-zip \
 		php-memcached \
     libmcrypt-dev \
 	&& apt-get clean \
@@ -47,13 +47,13 @@ RUN wget http://pear.php.net/go-pear.phar \
 
 RUN pecl channel-update pecl.php.net
 RUN pecl install -o -f mcrypt-1.0.5 && \
-    echo "extension=mcrypt.so" > /etc/php/8.1/apache2/conf.d/30-mcrypt.ini
+    echo "extension=mcrypt.so" > /etc/php/8.2/apache2/conf.d/30-mcrypt.ini
 
 RUN pecl install redis-5.3.7 \
-    echo "extension=redis.so" > /etc/php/8.1/apache2/conf.d/30-redis.ini
+    echo "extension=redis.so" > /etc/php/8.2/apache2/conf.d/30-redis.ini
 
 RUN pecl install xdebug-3.2.0 \
-    echo "extension=xdebug.so" > /etc/php/8.1/apache2/conf.d/30-xdebug.ini
+    echo "extension=xdebug.so" > /etc/php/8.2/apache2/conf.d/30-xdebug.ini
 
 #RUN apt-get install -y libmemcached zlib1g \
 #    && pecl install memcached-3.2.0 \
