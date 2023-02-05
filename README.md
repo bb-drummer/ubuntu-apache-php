@@ -1,9 +1,14 @@
 
 # Apache/PHP Docker Images und Container
 
+##Gitlab build
 
-- *derzeit verfügbare PHP Versionen*: **5.6**, **7.0**, **7.1**, **7.2**, **7.3**, **7.4**, **8.0**
+- *PHP versions available*: **7.3**, **7.4**, **8.0**, **8.1**, **8.2**
+- *outdated*: **5.6**, **7.0**, **7.1**, **7.2**
 
+##Docker build
+
+- *PHP versions available*: **5.6**, **7.0**, **7.1**, **7.2**, **7.3**, **7.4**, **8.0**, **8.1**, **8.2**
 
 ---
 
@@ -111,5 +116,3 @@ Für's Deployment (Push zu 'hub.docker.com') ist ein Docker build-/Zugangs-Token
 - Docker intro, install/download: https://www.docker.com/get-started
 - Docker docs: https://docs.docker.com/get-started/
 - Docker-Hub (global) image repository: https://hub.docker.com/
-
-Dieses Repository ist abgeleitet von und ergänzt https://github.com/mobingidocker/ubuntu-apache2-php7 .
