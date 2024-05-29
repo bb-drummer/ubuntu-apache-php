@@ -52,7 +52,7 @@ RUN pecl install -o -f mcrypt-1.0.5 && \
 RUN pecl install redis-5.3.7 \
     echo "extension=redis.so" > /etc/php/8.0/apache2/conf.d/30-redis.ini
 
-RUN pecl install xdebug-3.2.0 \
+RUN pecl install xdebug-3.1.1 \
     echo "extension=xdebug.so" > /etc/php/8.0/apache2/conf.d/30-xdebug.ini
 
 #RUN apt-get install -y libmemcached zlib1g \
