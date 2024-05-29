@@ -5,7 +5,7 @@ PHP_VERSION=$1
 cd `dirname $0`
 
 if [[ -z "$TEST_IP" ]]; then
-    TEST_IP=85.25.197.106;
+    TEST_IP=127.0.0.1;
 fi;
 if [[ -z "$TEST_PORT" ]]; then
     TEST_PORT=9876;
