@@ -21,64 +21,64 @@ php5.6:
   stage: legacy
   when: manual
   script:
-    - TEST_PORT=8856 test/test.sh 5.6
+    - TEST_PORT=9856 test/test.sh 5.6
 
 php7.0:
   <<: *test-setup
   when: manual
   stage: legacy
   script:
-    - TEST_PORT=8870 test/test.sh 7.0
+    - TEST_PORT=9870 test/test.sh 7.0
 
 php7.1:
   <<: *test-setup
   when: manual
   stage: legacy
   script:
-    - TEST_PORT=8871 test/test.sh 7.1
+    - TEST_PORT=9871 test/test.sh 7.1
 
 php7.2:
   <<: *test-setup
   when: manual
   stage: legacy
   script:
-    - TEST_PORT=8872 test/test.sh 7.2
+    - TEST_PORT=9872 test/test.sh 7.2
 
 php7.3:
   <<: *test-setup
   stage: build
   script:
-    - TEST_PORT=8873 test/test.sh 7.3
+    - TEST_PORT=9873 test/test.sh 7.3
 
 php7.4:
   <<: *test-setup
   stage: build
   script:
-    - TEST_PORT=8874 test/test.sh 7.4
+    - TEST_PORT=9874 test/test.sh 7.4
 
 php8.0:
   <<: *test-setup
   stage: build
   script:
-    - TEST_PORT=8880 test/test.sh 8.0
+    - TEST_PORT=9880 test/test.sh 8.0
 
 php8.1:
   <<: *test-setup
   stage: build
   script:
-    - TEST_PORT=8881 test/test.sh 8.1
+    - TEST_PORT=9881 test/test.sh 8.1
 
 php8.2:
   <<: *test-setup
   stage: build
   script:
-    - TEST_PORT=8882 test/test.sh 8.2
+    - TEST_PORT=9882 test/test.sh 8.2
 
 php8.3:
   <<: *test-setup
   stage: build
   script:
-    - TEST_PORT=8883 test/test.sh 8.3
+    - TEST_PORT=9883 test/test.sh 8.3
 
 docker-hub:
   image: docker:stable
