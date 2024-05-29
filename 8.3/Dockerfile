@@ -67,7 +67,8 @@ COPY conf/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 COPY conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-RUN apt-get update && apt-get install -y wget curl vim nano
+RUN apt-get update && apt-get install -y wget curl vim nano && \
+		apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY script/install-composer.sh /install-composer.sh
 RUN chmod 755 /install-composer.sh && /install-composer.sh

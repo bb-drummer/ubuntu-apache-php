@@ -52,8 +52,8 @@ RUN pecl install -o -f mcrypt-1.0.5 && \
 RUN pecl install redis-5.3.7 \
     echo "extension=redis.so" > /etc/php/8.0/apache2/conf.d/30-redis.ini
 
-RUN pecl install xdebug-3.1.1 \
-    echo "extension=xdebug.so" > /etc/php/8.0/apache2/conf.d/30-xdebug.ini
+RUN pecl install xdebug-3.3.2 \
+		echo "extension=xdebug.so" > /etc/php/8.0/apache2/conf.d/30-xdebug.ini
 
 #RUN apt-get install -y libmemcached zlib1g \
 #    && pecl install memcached-3.2.0 \
@@ -67,7 +67,8 @@ COPY conf/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 COPY conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-RUN apt-get update && apt-get install -y wget curl vim nano
+RUN apt-get update && apt-get install -y wget curl vim nano && \
+		apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY script/install-composer.sh /install-composer.sh
 RUN chmod 755 /install-composer.sh && /install-composer.sh

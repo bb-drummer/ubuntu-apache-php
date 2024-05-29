@@ -74,6 +74,12 @@ php8.2:
   script:
     - TEST_PORT=8882 test/test.sh 8.2
 
+php8.3:
+  <<: *test-setup
+  stage: build
+  script:
+    - TEST_PORT=8883 test/test.sh 8.3
+
 docker-hub:
   image: docker:stable
   services:
@@ -94,6 +100,7 @@ docker-hub:
     - php8.0
     - php8.1
     - php8.2
+    - php8.3
   script:
     - test/push_image_to_hub.sh
   when: manual
