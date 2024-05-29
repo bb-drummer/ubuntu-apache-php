@@ -46,10 +46,10 @@ RUN wget http://pear.php.net/go-pear.phar \
   && php go-pear.phar
 
 RUN pecl channel-update pecl.php.net
-RUN pecl install -o -f mcrypt-1.0.5 && \
+RUN pecl install -o -f mcrypt-1.0.7 && \
     echo "extension=mcrypt.so" > /etc/php/8.2/apache2/conf.d/30-mcrypt.ini
 
-RUN pecl install redis-5.3.7 \
+RUN pecl install redis-6.0.2 \
     echo "extension=redis.so" > /etc/php/8.2/apache2/conf.d/30-redis.ini
 
 RUN pecl install xdebug-3.3.2 \
