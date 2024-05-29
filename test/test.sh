@@ -30,7 +30,7 @@ echo "Docker Container IP: $CONTAINER_IP"
 sleep 15
 
 if [[ "$TEST_IP" == "none" ]]; then
-    docker exec -ti ${CID} curl -vf --retry 10 --retry-delay 5 --retry-connrefused http://127.0.0.1:80/index.php
+    docker exec -i ${CID} curl -vf --retry 10 --retry-delay 5 --retry-connrefused http://127.0.0.1:80/index.php
 else
     curl -vf --retry 10 --retry-delay 5 --retry-connrefused http://${CONTAINER_IP}:${TEST_PORT}/index.php
 fi;
