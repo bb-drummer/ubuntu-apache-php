@@ -5,7 +5,7 @@ PHP_VERSION=$1
 cd `dirname $0`
 
 if [[ -z "$TEST_IP" ]]; then
-    TEST_IP=127.0.0.1;
+    TEST_IP=none;
 fi;
 if [[ -z "$TEST_PORT" ]]; then
     TEST_PORT=9876;
@@ -30,7 +30,7 @@ echo "Docker Container IP: $CONTAINER_IP"
 sleep 15
 
 if [[ "$TEST_IP" == "none" ]]; then
-    docker exec -ti ${CID} curl -vf --retry 10 --retry-delay 5 --retry-connrefused http://127.0.0.1:80/index.php
+    docker exec -ti ${CID} curl -vf --retry 10 --retry-delay 5 --retry-connrefused http://${CONTAINER_IP}:80/index.php
 else
     curl -vf --retry 10 --retry-delay 5 --retry-connrefused http://$TEST_IP:$TEST_PORT/index.php
 fi;
