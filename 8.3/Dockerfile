@@ -47,13 +47,13 @@ RUN wget http://pear.php.net/go-pear.phar \
 
 RUN pecl channel-update pecl.php.net
 RUN pecl install -o -f mcrypt-1.0.7 && \
-    echo "extension=mcrypt.so" > /etc/php/8.2/apache2/conf.d/30-mcrypt.ini
+    echo "extension=mcrypt.so" > /etc/php/8.3/apache2/conf.d/30-mcrypt.ini
 
 RUN pecl install redis-6.0.2 \
-    echo "extension=redis.so" > /etc/php/8.2/apache2/conf.d/30-redis.ini
+    echo "extension=redis.so" > /etc/php/8.3/apache2/conf.d/30-redis.ini
 
 RUN pecl install xdebug-3.3.2 \
-    echo "extension=xdebug.so" > /etc/php/8.2/apache2/conf.d/30-xdebug.ini
+    echo "extension=xdebug.so" > /etc/php/8.3/apache2/conf.d/30-xdebug.ini
 
 #RUN apt-get install -y libmemcached zlib1g \
 #    && pecl install memcached-3.2.0 \
